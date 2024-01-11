@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Coffee-Shop</title>
+		<!-- font -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap"
+			rel="stylesheet"
+		/>
+		<!-- font awesome -->
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+		/>
+		<!-- styleCSS -->
+		<link rel="stylesheet" href="src/css/style.css" />
+		<!-- alpineJS -->
+		<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+		<!-- alpine-app.js -->
+		<script src="src/js/app.js" async></script>
+	</head>
+	<body>
+		<!-- HEADER START -->
+		<header>
+			<nav x-data>
+				<!-- logo start -->
+				<h1 class="logo"><a href="#home">Q.Cafe</a></h1>
+				<!-- logo end -->
+
+				<!-- feature start-->
+				<div class="feature">
+					<!-- shop start -->
+					<div class="shop">
+						<i class="fa-solid fa-bag-shopping"></i>
+						<span
+							class="quantity"
+							x-show="$store.cart.quantity"
+							x-text="$store.cart.quantity"
+						></span>
+					</div>
+					<!-- shop end -->
+
+					<!-- shop-card start-->
+					<div class="shop-card">
+						<div class="shop-card-container">
+							<template x-for="(item, index) in $store.cart.items" x-keys="index">
+								<div class="coffee-user">
+									<img :src="`/assets/images/${item.img}`" :alt="item.name" />
+									<div class="coffee-detail">
+										<p x-text="item.name"></p>
+										<div class="counts">
+											<span x-text="rupiah(item.price)"></span>&times;
+											<button id="remove" @click="$store.cart.remove(item.id)">&minus;</button>
+											<span x-text="item.quantity"></span>
+											<button id="add" @click="$store.cart.add(item)">&plus;</button>
+											&equals;<span x-text="rupiah(item.total)"></span>
+										</div>
+									</div>
+								</div>
+							</template>
+
+							<!-- cart empty start -->
+							<h4 x-show="!$store.cart.items.length" class="empty">Cart Is Empty</h4>
+							<!-- cart empty end -->
+
+							<!-- price start -->
+							<div x-show="$store.cart.items.length" class="price-coffee">
+								<p>total : <span x-text="rupiah($store.cart.total)"></span></p>
+							</div>
+							<!-- price end -->
+
+							<!-- customer start -->
+							<div x-show="$store.cart.items.length" class="customer">
+								<h2>Customer Detail</h2>
+								<form id="checkout-form">
+									<input
+										type="hidden"
+										name="items"
+										x-model="JSON.stringify($store.cart.items)"
+									/>
+									<input type="hidden" name="total" x-model="$store.cart.total" />
+									<div class="customer-input-grub">
+										<i class="fa-solid fa-user"></i>
+										<input
+											type="text"
+											name="name"
+											autocomplete="off"
+											placeholder="John Anderson"
+										/>
+									</div>
+									<div class="customer-input-grub">
+										<i class="fa-solid fa-envelope"></i>
+										<input
+											type="email"
+											name="email"
+											autocomplete="off"
+											placeholder="exempel@gmail.com"
+										/>
+									</div>
+									<div class="customer-input-grub">
+										<i class="fa-solid fa-phone"></i>
+										<input
+											type="number"
+											name="phone"
+											autocomplete="off"
+											placeholder="0812-3456-7890"
+										/>
+									</div>
+								</form>
+								<button type="submit" class="customer-btn disabled">Checkout</button>
+							</div>
+							<!-- customer end -->
+						</div>
+					</div>
+					<!-- shop card end -->
+				</div>
+				<!-- feature end -->
+			</nav>
+		</header>
+		<!-- HEADER END -->
+
+		<!-- PRODUCT SECTION START -->
+		<section id="product" x-data="products">
+			<div class="container">
+				<!-- product-title start -->
+				<div class="product-title">
+					<h2>Our Top Selling Products</h2>
+					<p>
+						Explore a menu of artisanal coffee blends, paired with delectable pastries and
+						savory snacks at the inviting coffee shop, promising a delightful experience.
+					</p>
+				</div>
+				<!-- product-title start -->
+
+				<!-- product-item start -->
+				<div class="product-item">
+					<template x-for="(item, index) in items" x-key="index">
+						<div class="card-item">
+							<div class="love-parent">
+								<div class="item-love" :id="item.id" onclick="updateStatus(this)">
+									<i class="fa-regular fa-heart"></i>
+								</div>
+								<span class="total-love">1.3k</span>
+							</div>
+							<div class="item-images">
+								<img :src="`assets/images/${item.img}`" :alt="item.name" />
+							</div>
+							<div class="item-information">
+								<p>4 Types Avaiaible</p>
+								<h4 x-text="item.name"></h4>
+							</div>
+							<div class="item-price">
+								<p x-text="rupiah(item.price)"></p>
+								<div class="item-shop" @click="$store.cart.add(item)">
+									<i class="fa-solid fa-bag-shopping"></i>
+								</div>
+							</div>
+						</div>
+					</template>
+				</div>
+				<!-- product-item end -->
+			</div>
+		</section>
+		<!-- PRODUCT SECTION END -->
+
+		<!-- scriptJS -->
+		<script src="script.js"></script>
+	</body>
+</html>
