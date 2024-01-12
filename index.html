@@ -18,15 +18,11 @@
 		/>
 		<!-- styleCSS -->
 		<link rel="stylesheet" href="src/css/style.css" />
-		<!-- alpineJS -->
-		<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-		<!-- alpine-app.js -->
-		<script src="src/js/app.js" async></script>
 	</head>
 	<body>
 		<!-- HEADER START -->
 		<header>
-			<nav x-data>
+			<nav>
 				<!-- logo start -->
 				<h1 class="logo"><a href="#home">Q.Cafe</a></h1>
 				<!-- logo end -->
@@ -36,53 +32,43 @@
 					<!-- shop start -->
 					<div class="shop">
 						<i class="fa-solid fa-bag-shopping"></i>
-						<span
-							class="quantity"
-							x-show="$store.cart.quantity"
-							x-text="$store.cart.quantity"
-						></span>
+						<span class="quantity"></span>
 					</div>
 					<!-- shop end -->
 
 					<!-- shop-card start-->
 					<div class="shop-card">
 						<div class="shop-card-container">
-							<template x-for="(item, index) in $store.cart.items" x-keys="index">
-								<div class="coffee-user">
-									<img :src="`/assets/images/${item.img}`" :alt="item.name" />
-									<div class="coffee-detail">
-										<p x-text="item.name"></p>
-										<div class="counts">
-											<span x-text="rupiah(item.price)"></span>&times;
-											<button id="remove" @click="$store.cart.remove(item.id)">&minus;</button>
-											<span x-text="item.quantity"></span>
-											<button id="add" @click="$store.cart.add(item)">&plus;</button>
-											&equals;<span x-text="rupiah(item.total)"></span>
-										</div>
+							<div class="coffee-user">
+								<img src="/assets/images/product-1.png" :alt="1" />
+								<div class="coffee-detail">
+									<p x-text="item.name"></p>
+									<div class="counts">
+										<span></span>&times;
+										<button id="remove">&minus;</button>
+										<span></span>
+										<button id="add">&plus;</button>
+										&equals;<span></span>
 									</div>
 								</div>
-							</template>
+							</div>
 
 							<!-- cart empty start -->
-							<h4 x-show="!$store.cart.items.length" class="empty">Cart Is Empty</h4>
+							<h4 class="empty">Cart Is Empty</h4>
 							<!-- cart empty end -->
 
 							<!-- price start -->
-							<div x-show="$store.cart.items.length" class="price-coffee">
-								<p>total : <span x-text="rupiah($store.cart.total)"></span></p>
+							<div class="price-coffee">
+								<p>total : <span></span></p>
 							</div>
 							<!-- price end -->
 
 							<!-- customer start -->
-							<div x-show="$store.cart.items.length" class="customer">
+							<div class="customer">
 								<h2>Customer Detail</h2>
 								<form id="checkout-form">
-									<input
-										type="hidden"
-										name="items"
-										x-model="JSON.stringify($store.cart.items)"
-									/>
-									<input type="hidden" name="total" x-model="$store.cart.total" />
+									<input type="hidden" name="items" />
+									<input type="hidden" name="total" />
 									<div class="customer-input-grub">
 										<i class="fa-solid fa-user"></i>
 										<input
@@ -124,7 +110,7 @@
 		<!-- HEADER END -->
 
 		<!-- PRODUCT SECTION START -->
-		<section id="product" x-data="products">
+		<section id="product">
 			<div class="container">
 				<!-- product-title start -->
 				<div class="product-title">
@@ -138,29 +124,27 @@
 
 				<!-- product-item start -->
 				<div class="product-item">
-					<template x-for="(item, index) in items" x-key="index">
-						<div class="card-item">
-							<div class="love-parent">
-								<div class="item-love" :id="item.id" onclick="updateStatus(this)">
-									<i class="fa-regular fa-heart"></i>
-								</div>
-								<span class="total-love">1.3k</span>
+					<!-- <div class="card-item">
+						<div class="love-parent">
+							<div class="item-love" id="item.id" onclick="updateStatus(this)">
+								<i class="fa-regular fa-heart"></i>
 							</div>
-							<div class="item-images">
-								<img :src="`assets/images/${item.img}`" :alt="item.name" />
-							</div>
-							<div class="item-information">
-								<p>4 Types Avaiaible</p>
-								<h4 x-text="item.name"></h4>
-							</div>
-							<div class="item-price">
-								<p x-text="rupiah(item.price)"></p>
-								<div class="item-shop" @click="$store.cart.add(item)">
-									<i class="fa-solid fa-bag-shopping"></i>
-								</div>
+							<span class="total-love">1.3k</span>
+						</div>
+						<div class="item-images">
+							<img src="/assets/images/product-1.png" alt="1" />
+						</div>
+						<div class="item-information">
+							<p>4 Types Avaiaible</p>
+							<h4></h4>
+						</div>
+						<div class="item-price">
+							<p></p>
+							<div class="item-shop">
+								<i class="fa-solid fa-bag-shopping"></i>
 							</div>
 						</div>
-					</template>
+					</div> -->
 				</div>
 				<!-- product-item end -->
 			</div>
@@ -169,5 +153,6 @@
 
 		<!-- scriptJS -->
 		<script src="script.js"></script>
+		<script src="src/js/app.js"></script>
 	</body>
 </html>
