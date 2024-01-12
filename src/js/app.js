@@ -1,4 +1,8 @@
 const containerProduct = document.querySelector('.product-item');
+const containerShop = document.querySelector('.container-coffee-user');
+const shop = document.querySelector('.shop');
+const quantityShop = document.querySelector('.quantity');
+const empety = document.querySelector('.empty');
 
 const product = [
 	{ id: 1, name: 'Instans Coffee', img: 'product-1.png', price: 15000, status: 'false' },
@@ -11,6 +15,15 @@ const product = [
 
 // variabel status yang disimpan di JSON
 let likes = JSON.parse(localStorage.getItem('love-item')) || [];
+
+// function rupiah
+const rupiah = (number) => {
+	return new Intl.NumberFormat('id-ID', {
+		style: 'currency',
+		currency: 'IDR',
+		minimumFractionDigits: 0,
+	}).format(number);
+};
 
 function showProduct() {
 	let cardTag = '';
@@ -31,7 +44,7 @@ function showProduct() {
 		</div>
 		<div class="item-price">
 			<p>${rupiah(item.price)}</p>
-			<div class="item-shop">
+			<div class="item-shop" onclick="addItem(${key})">
 				<i class="fa-solid fa-bag-shopping"></i>
 			</div>
 		</div>
@@ -39,19 +52,61 @@ function showProduct() {
 	});
 	containerProduct.innerHTML = cardTag;
 }
-
-const rupiah = (number) => {
-	return new Intl.NumberFormat('id-ID', {
-		style: 'currency',
-		currency: 'IDR',
-		minimumFractionDigits: 0,
-	}).format(number);
-};
-
 showProduct();
 
-const loves = document.querySelectorAll('.item-love');
+let dataShop = [];
+let quantity = 0;
+function addItem(id) {
+	const itemShop = product[id];
+	const cartItem = dataShop.find((item) => item.id === itemShop.id);
+	if (!cartItem) {
+		dataShop.push({ ...itemShop, subquantity: 1, subtotal: itemShop.price });
+		quantity++;
+	} else {
+		dataShop = dataShop.map((item) => {
+			if (item.id !== itemShop.id) {
+				return item;
+			} else {
+				item.subquantity++;
+				item.subtotal = item.price * item.subquantity;
+				quantity++;
+				return item;
+			}
+		});
+	}
+	// console.log(dataShop);
+	// console.log(quantity);
+	reloadItem();
+}
 
+function reloadItem() {
+	let liTag = '';
+	dataShop.forEach((item, id) => {
+		if (dataShop.length > 0) {
+			liTag += `<div class="coffee-user" id="${id}">
+					<img src="/assets/images/${item.img}" alt="${item.id}" />
+					<div class="coffee-detail">
+						<p>${item.name}</p>
+						<div class="counts">
+							<span>${rupiah(item.price)}</span>&times;
+							<button id="remove">&minus;</button>
+							<span>${item.subquantity}</span>
+							<button id="add">&plus;</button>
+							&equals;<span>${rupiah(item.subtotal)}</span>
+						</div>
+					</div>
+				</div>`;
+			quantityShop.innerHTML = `<span>${quantity}</span>`;
+		}
+	});
+	containerShop.innerHTML = liTag;
+}
+
+function addValue(id, sub) {
+	dataShop;
+}
+
+const loves = document.querySelectorAll('.item-love');
 // !function updatestatus
 function updateStatus(selectLove) {
 	selectLove.classList.toggle('love-active');

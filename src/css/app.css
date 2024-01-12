@@ -83,7 +83,7 @@ nav .feature {
 .feature .shop {
 	position: relative;
 }
-.feature .shop .quantity {
+.feature .shop .quantity span {
 	font-family: var(--poppins-font);
 	position: absolute;
 	top: -5px;

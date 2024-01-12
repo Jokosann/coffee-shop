@@ -1,13 +1,7 @@
-const hamburger = document.querySelector('.hamburger');
-const navMenu = document.querySelector('.nav-menu');
 const links = document.querySelectorAll('a[href^="#"]');
-const searchIcon = document.querySelector('.search');
-const searchInput = document.querySelector('.search-input');
-const searchInputBox = document.getElementById('search');
 const shopIcon = document.querySelector('.shop');
 const shopCard = document.querySelector('.shop-card');
 const shopCardContainer = document.querySelector('.shop-card-container');
-// const loves = document.querySelectorAll('.item-love');
 
 // add clas overflow to shop-card
 shopCard.classList.toggle('overflow', shopCardContainer.offsetHeight > 521);
