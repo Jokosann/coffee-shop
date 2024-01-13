@@ -82,28 +82,46 @@ function addItem(id) {
 function reloadItem() {
 	let liTag = '';
 	dataShop.forEach((item, id) => {
-		if (dataShop.length > 0) {
-			liTag += `<div class="coffee-user" id="${id}">
+		liTag += `<div class="coffee-user" id="${id}">
 					<img src="/assets/images/${item.img}" alt="${item.id}" />
 					<div class="coffee-detail">
 						<p>${item.name}</p>
 						<div class="counts">
 							<span>${rupiah(item.price)}</span>&times;
-							<button id="remove">&minus;</button>
+							<button id="remove" onclick="removeValue(${id},${item.id} ,${
+			item.subquantity - 1
+		})">&minus;</button>
 							<span>${item.subquantity}</span>
-							<button id="add">&plus;</button>
+							<button id="add" onclick="addValue(${id},${item.id} ,${item.subquantity + 1})">&plus;</button>
 							&equals;<span>${rupiah(item.subtotal)}</span>
 						</div>
 					</div>
 				</div>`;
-			quantityShop.innerHTML = `<span>${quantity}</span>`;
-		}
+		quantityShop.innerHTML = `<span>${quantity}</span>`;
 	});
 	containerShop.innerHTML = liTag;
 }
 
-function addValue(id, sub) {
-	dataShop;
+function addValue(key, id, sub) {
+	dataShop[key].subquantity = sub;
+	dataShop[key].price = sub * product[id - 1].price;
+	dataShop[key].subtotal = dataShop[key].price;
+	quantity++;
+
+	reloadItem();
+}
+
+function removeValue(key, id, sub) {
+	if (sub === 0) {
+		dataShop = dataShop.filter((item) => item.id !== id);
+		console.log(dataShop);
+	} else if (sub >= 1) {
+		dataShop[key].subquantity = sub;
+		dataShop[key].price = sub * product[id - 1].price;
+		dataShop[key].subtotal = dataShop[key].price;
+		quantity--;
+	}
+	reloadItem();
 }
 
 const loves = document.querySelectorAll('.item-love');

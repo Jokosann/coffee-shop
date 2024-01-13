@@ -27,7 +27,7 @@ function shopClick() {
 
 // function ketika user mengclick apapun
 function handleCloseOutside(e) {
-	if (!shopCard.contains(e.target) && !shopIcon.contains(e.target)) {
+	if (!shopCard.contains(e.target) && !shopIcon.contains(e.target) && !shopCard) {
 		shopCard.classList.remove('shop-active');
 	}
 }
