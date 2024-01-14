@@ -267,6 +267,9 @@ nav .feature {
 	color: var(--main-color);
 	opacity: 0.7;
 }
+.customer form .customer-input-grub input:focus::placeholder {
+	opacity: 0;
+}
 .customer .customer-btn {
 	background-color: var(--main-color);
 	border: none;
@@ -398,7 +401,7 @@ nav .feature {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	gap: 0.6rem;
+	gap: 0.5rem;
 	margin-bottom: 1rem;
 }
 .item-information p {
@@ -411,7 +414,7 @@ nav .feature {
 }
 .item-information h4 {
 	font-family: var(--playfair-font);
-	font-size: 1.2rem;
+	font-size: 1.3rem;
 	font-weight: 700;
 	color: var(--main-color);
 }
@@ -432,14 +435,14 @@ nav .feature {
 .item-price .item-shop {
 	display: grid;
 	place-content: center;
-	width: 30px;
+	width: 35px;
 	aspect-ratio: 1/1;
 	border-radius: 50%;
 	background-color: var(--second-color);
 	cursor: pointer;
 }
 .item-shop i {
-	font-size: 14px;
+	font-size: 16px;
 	color: white;
 }
 

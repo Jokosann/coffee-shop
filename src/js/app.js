@@ -227,7 +227,7 @@ customerBtn.addEventListener('click', async function (e) {
 });
 
 const formatMessage = (obj) => {
-	return `DATA CUSTEMER \nnama: ${obj.name} \nEmail: ${obj.email} \nNo HP: ${
+	return `DATA CUSTEMER \nNama: ${obj.name} \nEmail: ${obj.email} \nNo HP: ${
 		obj.phone
 	}\n \nDATA PESANAN ${JSON.parse(obj.items).map(
 		(item, key) =>
