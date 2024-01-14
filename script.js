@@ -1,6 +1,7 @@
 const links = document.querySelectorAll('a[href^="#"]');
 const shopIcon = document.querySelector('.shop');
 const shopCard = document.querySelector('.shop-card');
+const shopCardChild = document.querySelector('.shop-card i');
 const shopCardContainer = document.querySelector('.shop-card-container');
 
 // add clas overflow to shop-card
@@ -25,13 +26,5 @@ function shopClick() {
 	shopCard.classList.toggle('shop-active');
 }
 
-// function ketika user mengclick apapun
-function handleCloseOutside(e) {
-	if (!shopCard.contains(e.target) && !shopIcon.contains(e.target) && !shopCard) {
-		shopCard.classList.remove('shop-active');
-	}
-}
-
 // !eventListener
 shopIcon.addEventListener('click', shopClick);
-document.addEventListener('click', handleCloseOutside);

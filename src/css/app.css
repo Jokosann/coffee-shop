@@ -150,12 +150,12 @@ nav .feature {
 	display: flex;
 	align-items: center;
 	gap: 1rem;
-	padding-block: 0.7rem;
+	padding-block: 0.8rem;
 	border-bottom: 0.4mm dotted var(--container-color);
 }
 .shop-card .coffee-user img {
-	width: 40px;
-	height: 40px;
+	width: 50px;
+	height: 50px;
 	border-radius: 50%;
 }
 .shop-card .coffee-user .coffee-detail {
@@ -166,7 +166,7 @@ nav .feature {
 }
 .shop-card .coffee-user .coffee-detail p {
 	font-weight: 800;
-	font-size: 12px;
+	font-size: 14px;
 	letter-spacing: 1px;
 	font-family: var(--playfair-font);
 	color: var(--container-color);
@@ -178,16 +178,16 @@ nav .feature {
 	gap: 0.3rem;
 }
 .shop-card .coffee-user .coffee-detail .counts span {
-	font-size: 11px;
+	font-size: 12px;
 }
 .coffee-user .coffee-detail .counts button {
 	background-color: var(--container-color);
 	border: none;
-	font-size: 10px;
+	font-size: 12px;
 	font-weight: bold;
 	padding: 1px 4px;
 	cursor: pointer;
-	margin-inline: 3px;
+	margin-inline: 5px;
 	margin-top: -3px;
 }
 /* coffee-detail end */
@@ -195,18 +195,21 @@ nav .feature {
 /* price-coffee start*/
 .shop-card .price-coffee {
 	text-align: center;
-	padding: 1rem;
+	padding: 0.3rem 1.3rem 1.3rem;
 	font-family: var(--poppins-font);
 	border-bottom: 0.4mm dotted var(--container-color);
 }
 .shop-card .price-coffee p {
-	text-transform: capitalize;
-	font-size: 14px;
-	font-weight: 500;
+	text-transform: uppercase;
+	font-size: 16px;
+	font-weight: 700;
+	color: var(--container-color);
 }
 .shop-card .price-coffee p span {
-	font-size: 14px;
-	font-weight: 500;
+	text-transform: capitalize;
+	font-size: 16px;
+	font-weight: 700;
+	color: var(--container-color);
 }
 /* price-coffee end */
 
@@ -218,10 +221,13 @@ nav .feature {
 	align-items: center;
 	gap: 0.8rem;
 }
+.shop-card .customer.hidden {
+	display: none;
+}
 .shop-card .customer h2 {
 	font-family: var(--poppins-font);
 	font-weight: 600;
-	font-size: 14px;
+	font-size: 15px;
 	text-align: center;
 	padding: 0.8rem 0 0;
 }
@@ -234,7 +240,7 @@ nav .feature {
 }
 .shop-card .customer form .customer-input-grub {
 	width: 100%;
-	height: 30px;
+	height: 40px;
 	border-radius: 4px;
 	position: relative;
 	background-color: var(--bg-color);
@@ -266,8 +272,9 @@ nav .feature {
 	border: none;
 	border-radius: 4px;
 	color: var(--bg-color);
-	height: 30px;
-	width: 5rem;
+	font-size: 16px;
+	height: 40px;
+	width: 6rem;
 	padding-inline: 0.8rem;
 	cursor: pointer;
 }
@@ -434,6 +441,10 @@ nav .feature {
 .item-shop i {
 	font-size: 14px;
 	color: white;
+}
+
+.hidden {
+	display: none;
 }
 /* item price start */
 /* product item end */
