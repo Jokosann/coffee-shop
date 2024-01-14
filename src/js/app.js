@@ -7,12 +7,36 @@ const totalProduct = document.querySelector('.price-coffee');
 const customer = document.querySelector('.customer');
 
 const product = [
-	{ id: 1, name: 'Instans Coffee', img: 'product-1.png', price: 15000, status: 'false' },
-	{ id: 2, name: 'Black Coffee', img: 'product-2.png', price: 10000, status: 'false' },
-	{ id: 3, name: 'Latte', img: 'product-3.png', price: 12000, status: 'false' },
-	{ id: 4, name: 'Cappuccino', img: 'product-4.png', price: 15000, status: 'false' },
-	{ id: 5, name: 'Expresso', img: 'product-5.png', price: 12000, status: 'false' },
-	{ id: 6, name: 'Mocha', img: 'product-6.png', price: 20000, status: 'false' },
+	{
+		id: 1,
+		name: 'Instans Coffee',
+		img: 'assets/images/product-1.png',
+		price: 15000,
+		status: 'false',
+	},
+	{
+		id: 2,
+		name: 'Black Coffee',
+		img: 'assets/images/product-2.png',
+		price: 10000,
+		status: 'false',
+	},
+	{ id: 3, name: 'Latte', img: 'assets/images/product-3.png', price: 12000, status: 'false' },
+	{
+		id: 4,
+		name: 'Cappuccino',
+		img: 'assets/images/product-4.png',
+		price: 15000,
+		status: 'false',
+	},
+	{
+		id: 5,
+		name: 'Expresso',
+		img: 'assets/images/product-5.png',
+		price: 12000,
+		status: 'false',
+	},
+	{ id: 6, name: 'Mocha', img: 'assets/images/product-6.png', price: 20000, status: 'false' },
 ];
 
 // variabel status yang disimpan di JSON
@@ -41,7 +65,7 @@ function showProduct() {
 			<span class="total-love">1.3k</span>
 		</div>
 		<div class="item-images">
-			<img src="../../../assets/images/${item.img}" alt="${key}" />
+			<img src="${item.img}" alt="${key}" />
 		</div>
 		<div class="item-information">
 			<p>4 Types Avaiaible</p>
@@ -91,7 +115,7 @@ function reloadItem() {
 	let liTag = '';
 	dataShop.forEach((item, id) => {
 		liTag += `<div class="coffee-user" id="${id}">
-								<img src="../../../assets/images/${item.img}" alt="${item.id}" />
+								<img src="${item.img}" alt="${item.id}" />
 								<div class="coffee-detail">
 									<p>${item.name}</p>
 									<div class="counts">
