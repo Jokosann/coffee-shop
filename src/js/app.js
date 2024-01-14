@@ -199,20 +199,17 @@ function getForm() {
 const customerBtn = document.querySelector('.customer-btn');
 
 customerBtn.disabled = true;
-
 form.addEventListener('keyup', function () {
 	for (let i = 0; i < form.elements.length; i++) {
-		if (form.elements[2].value.length !== 0) {
+		if (
+			form.elements[i].value.length !== 0 &&
+			form.elements[0] !== 0 &&
+			form.elements[1] !== 0
+		) {
 			customerBtn.classList.remove('disabled');
 			customerBtn.classList.add('disabled');
-		}
-		if (form.elements[3].value.length !== 0) {
-			customerBtn.classList.remove('disabled');
-			customerBtn.classList.add('disabled');
-		}
-		if (form.elements[4].value.length !== 0) {
-			customerBtn.classList.remove('disabled');
-			customerBtn.classList.add('disabled');
+		} else {
+			return false;
 		}
 	}
 	customerBtn.disabled = false;
