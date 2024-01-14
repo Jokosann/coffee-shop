@@ -41,7 +41,7 @@ function showProduct() {
 			<span class="total-love">1.3k</span>
 		</div>
 		<div class="item-images">
-			<img src="/assets/images/${item.img}" alt="${key}" />
+			<img src="assets/images/${item.img}" alt="${key}" />
 		</div>
 		<div class="item-information">
 			<p>4 Types Avaiaible</p>
@@ -91,7 +91,7 @@ function reloadItem() {
 	let liTag = '';
 	dataShop.forEach((item, id) => {
 		liTag += `<div class="coffee-user" id="${id}">
-								<img src="/assets/images/${item.img}" alt="${item.id}" />
+								<img src="assets/images/${item.img}" alt="${item.id}" />
 								<div class="coffee-detail">
 									<p>${item.name}</p>
 									<div class="counts">
